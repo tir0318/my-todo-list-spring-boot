@@ -1,0 +1,110 @@
+/* --- CSS変数定義 --- */
+:root {
+    --primary-color: #4a90e2;
+    --primary-color-dark: #357ABD;
+    --bg-color: #f0f2f5;
+    --surface-color: #ffffff;
+    --text-color: #333333;
+    --text-color-light: #888888;
+    --border-color: #e0e0e0;
+    --danger-color: #e94f37;
+    --success-color: #4caf50;
+    --edit-bg-color: #eef2f8; /* 編集中の背景色を追加 */
+    --font-family: 'Poppins', sans-serif;
+}
+
+/* --- 基本スタイル & リセット --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: var(--font-family), serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* --- コンテナとヘッダー --- */
+.app-container { width: 100%; max-width: 550px; background-color: var(--surface-color); border-radius: 16px; padding: 32px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); }
+.app-header { text-align: center; margin-bottom: 24px; }
+.app-header h1 { font-size: 2rem; font-weight: 700; }
+.app-header p { color: var(--text-color-light); font-size: 0.9rem; }
+
+/* --- タスク追加フォーム --- */
+.todo-form { display: flex; gap: 12px; margin-bottom: 24px; }
+#new-todo-input { flex-grow: 1; border: 1px solid var(--border-color); border-radius: 8px; padding: 12px 16px; font-size: 1rem;
+    font-family: var(--font-family), serif; transition: border-color 0.3s, box-shadow 0.3s; }
+#new-todo-input:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2); }
+.todo-form button { flex-shrink: 0; width: 48px; height: 48px; border: none; background-color: var(--primary-color); color: white; border-radius: 8px; font-size: 1.8rem; font-weight: 500; cursor: pointer; transition: background-color 0.3s, transform 0.2s; }
+.todo-form button:hover { background-color: var(--primary-color-dark); transform: translateY(-2px); }
+
+/* --- TODOリスト本体 --- */
+.todo-list-container { list-style: none; }
+.todo-item { display: flex; align-items: center; gap: 16px; padding: 16px 8px; border-bottom: 1px solid var(--border-color); transition: background-color 0.3s; }
+.todo-item:last-child { border-bottom: none; }
+
+/* --- カスタムチェックボックス --- */
+.todo-item .checkbox { appearance: none; width: 22px; height: 22px; border: 2px solid var(--border-color); border-radius: 50%; cursor: pointer; position: relative; transition: all 0.3s; flex-shrink: 0; }
+.todo-item .checkbox:checked { background-color: var(--success-color); border-color: var(--success-color); }
+.todo-item .checkbox:checked::after { content: '✔'; color: white; font-size: 14px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+/* --- 削除ボタン --- */
+.delete-btn { flex-shrink: 0; width: 32px; height: 32px; border: none; background-color: transparent; color: var(--text-color-light); border-radius: 50%; font-size: 1.5rem; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: background-color 0.3s, color 0.3s; }
+.delete-btn:hover { background-color: var(--danger-color); color: white; }
+
+/* タスクテキストと編集入力欄を囲むラッパー */
+.task-wrapper {
+    flex-grow: 1;
+    position: relative; /* 子要素の位置決めの基準 */
+}
+
+/* 表示用のタスクテキスト */
+.task-wrapper .task {
+    cursor: pointer;
+    display: block; /* 常にブロック要素として扱う */
+    padding: 4px 6px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+.task-wrapper .task:hover {
+    background-color: #f7f7f7; /* ホバーで編集可能であることを示唆 */
+}
+
+/* 完了したタスクのスタイル */
+.todo-item.completed .task {
+    color: var(--text-color-light);
+    text-decoration: line-through;
+}
+
+/* 編集用の入力欄の新しいスタイル */
+.task-wrapper .edit-input {
+    /* 見た目をテキストと完全に一致させる */
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    width: 100%;
+    padding: 4px 6px; /* .taskと合わせる */
+
+    /* 枠線や余計なスタイルを消す */
+    border: none;
+    outline: none;
+
+    /* 編集モードであることを示す背景色 */
+    background-color: var(--edit-bg-color);
+    border-radius: 4px;
+}
+
+/* クラスによる表示切り替え */
+.task-wrapper .task,
+.task-wrapper .edit-input {
+    display: none; /* まず両方隠す */
+}
+
+/* 通常モードの表示 */
+.todo-item:not(.editing) .task-wrapper .task {
+    display: block;
+}
+/* 編集モードの表示 */
+.todo-item.editing .task-wrapper .edit-input {
+    display: block;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Todo App</title>
+
+    <!-- Google Fontsの読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="app-container">
+    <header class="app-header">
+        <h1>My Tasks</h1>
+        <p>シンプルなTODOリスト</p>
+    </header>
+
+    <!-- 新しいタスクを追加するフォーム -->
+    <form id="add-todo-form" class="todo-form">
+        <label for="new-todo-input"></label><input type="text" id="new-todo-input" placeholder="例: 午後に牛乳を買う" required autocomplete="off">
+        <button type="submit" aria-label="Add Task">+</button>
+    </form>
+
+    <!-- TODOリストがここに表示される -->
+    <ul id="todo-list" class="todo-list-container">
+        <!-- ローディング表示など -->
+    </ul>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
