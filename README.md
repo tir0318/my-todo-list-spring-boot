@@ -1,79 +1,80 @@
-Spring Boot & JavaScript TODOリスト
+# Spring Boot & JavaScript TODO List
 
-Spring Boot (Java) をバックエンドAPIサーバーとして、HTML/CSS/JavaScriptをフロントエンドとして使用した、シンプルなToDoリストアプリケーションです。
-Spring Bootとフロントエンドを連携させる学習のために作成しました。
+Spring Boot (Java) とモダンなJavaScript(Vanilla JS)で作る、フルスタックなTODOリストアプリケーションです。
+バックエンドAPIとフロントエンドを連携させる学習目的で作成しました。
 
-主な機能
+![ここにスクリーンショットやGIF画像を挿入すると、より分かりやすくなります](https://via.placeholder.com/600x400.png?text=TODO+App+Screenshot)
 
-このToDoリストでできることです。
+---
 
-タスクの追加: 新しいタスクを入力して追加できます。
+## ✨ 主な機能 (Features)
 
-タスクの一覧表示: ページ読み込み時にすべてのタスクを表示します。
+- ✅ **タスクの追加**: 新しいタスクをリストに追加します。
+- 📝 **タスクの編集**: テキストをクリックして内容を更新し、Enterキーで保存します。
+- ✔️ **タスクの完了/未完了**: チェックボックスでタスクの状態を切り替えられます。
+- 🗑️ **タスクの削除**: 不要になったタスクを削除します。
+- 💾 **データ永続化**: 作成したタスクはH2データベースに保存され、アプリケーションを再起動しても保持されます。
 
-タスクの完了: チェックボックスをクリックして、タスクを完了状態（取り消し線）にできます。
+---
 
-タスクの削除: × ボタンでタスクを削除できます。
-
-タスクの編集: タスクのテキストをクリックすると編集モードになり、Enterキーで内容を保存できます。
-
-データ永続化: タスクはH2データベースに保存されます。
-
-使用技術
+## 🛠️ 使用技術 (Tech Stack)
 
 このプロジェクトで使用している主な技術です。
 
-バックエンド (サーバー側)
+| カテゴリ      | 技術                                       |
+| :------------ | :----------------------------------------- |
+| **バックエンド**  | Java (JDK 25), Spring Boot, Spring Data JPA, Lombok |
+| **フロントエンド** | HTML5, CSS3, JavaScript (ES6+, async/await) |
+| **データベース**  | H2 In-Memory Database                      |
 
-Java (JDK 25)
+---
 
-Spring Boot
+## 🚀 実行方法 (Getting Started)
 
-Spring Data JPA
+このプロジェクトをローカル環境で動かす手順です。
 
-Lombok
+### 必要なもの (Prerequisites)
 
-フロントエンド (ブラウザ側)
+- Java Development Kit (JDK 25 or later) ※
+- Apache Maven
 
-HTML5
+※ `pom.xml`のJavaバージョンと合わせてください。
 
-CSS3 (モダンなデザイン)
+### セットアップ手順 (Installation)
 
-JavaScript (ES6+, async/await, fetch API)
+1.  **リポジトリをクローン**
+    ```sh
+    git clone [リポジトリのURL]
+    cd [プロジェクト名]
+    ```
 
-データベース
+2.  **Spring Bootアプリケーションの起動**
+    - **IDEを使う場合 (推奨):**
+        1.  IntelliJ IDEAなどのIDEでプロジェクトを開きます。
+        2.  Mavenの依存関係が自動的にダウンロードされるのを待ちます。
+        3.  `src/main/java/com/example/todo/TodoListApplication.java` を開き、`main`メソッドを実行します。
+    - **コマンドラインを使う場合:**
+        ```sh
+        mvn spring-boot:run
+        ```
 
-H2 In-Memory Database (インメモリデータベース)
+3.  **アプリケーションにアクセス**
+    - サーバーが起動したら、ブラウザで以下のURLにアクセスしてください。
+    - 👉 **http://localhost:8080**
 
-実行方法
+---
 
-このプロジェクトをあなたのPCで動かす方法です。
+## 🗃️ H2データベースの確認
 
-必要なもの
+本アプリケーションは、起動時にメモリ上で動作するH2データベースを使用しています。
+開発中にデータベースの状態を確認したい場合は、以下の管理画面にアクセスできます。
 
-Java (JDK 25)
+- **H2コンソールURL:** http://localhost:8080/h2-console
 
-Maven
+以下の情報でログインしてください。
 
-手順
-
-このリポジトリをローカルにクローン（ダウンロード）します。
-
-IntelliJ IDEAなどのIDEでプロジェクトを開きます。
-
-Mavenの依存関係が自動的にダウンロードされるのを待ちます。
-
-src/main/java/com/example/todo/TodoListApplication.java ファイルを開き、main メソッドを実行してSpring Bootアプリケーションを起動します。
-
-ブラウザで http://localhost:8080 にアクセスすると、ToDoリストの画面が表示されます。
-
-データベースの確認
-
-このアプリケーションは、起動するたびにデータがリセットされる「インメモリデータベース」を使用しています。
-application.properties の設定により、http://localhost:8080/h2-console からデータベースの管理画面にアクセスできます。
-
-JDBC URL: jdbc:h2:mem:testdb
-
-ユーザー名: sa
-
-パスワード: (なし)
+| 設定項目      | 値                      |
+| :------------ | :---------------------- |
+| **JDBC URL**  | `jdbc:h2:mem:testdb`    |
+| **ユーザー名**  | `sa`                    |
+| **パスワード**  | (空欄のまま)            |
