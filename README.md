@@ -3,8 +3,6 @@
 Spring Boot (Java) とモダンなJavaScript(Vanilla JS)で作る、フルスタックなTODOリストアプリケーションです。
 バックエンドAPIとフロントエンドを連携させる学習目的で作成しました。
 
-![ここにスクリーンショットやGIF画像を挿入すると、より分かりやすくなります](https://via.placeholder.com/600x400.png?text=TODO+App+Screenshot)
-
 ---
 
 ## ✨ 主な機能 (Features)
